@@ -1,0 +1,8 @@
+.audit-header{
+    display: flex;
+    flex-direction: row;
+    padding: 12px;
+    align-items: center;
+    justify-content: space-between;
+    width: 1000px;
+}
