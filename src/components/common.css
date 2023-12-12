@@ -8,9 +8,6 @@
     margin: 1px 0px 1px 1px;
     padding: 15px 0px 0px 0px
 }
-.side-nav > *{
-    background-color: white;
-}
 /* .menu-item{
 
 } */
@@ -18,16 +15,11 @@
     background-color: #54cf93;
     border-radius: 8px;
     text-align: left;
-    margin:1px 15px 1px 15px;
     pointer-events: none;
 }
 .sidenav{
     border-radius: 8px;
     text-align: left;
-    margin:1px 15px 1px 15px;
-}
-.sidenav-category {
-    padding: 0px 0px 0px 15px;
 }
 
 /* profile bar */
@@ -52,11 +44,4 @@
     background-color: transparent;
     border: 0;
     margin: 5px 0px 5px 0px
-}
-.logout-button:hover{
-    background-color: black;
-}
-.logout-button:hover *{
-    
-    color: white;
 }
