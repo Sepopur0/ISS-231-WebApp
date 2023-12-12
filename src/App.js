@@ -2,10 +2,11 @@ import './App.css';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import SideNavigation from './components/sideNavigation';
+import ProfileBar from './components/profileBar';
 import AuditForHR from './screens/auditForHR';
+import HRDashboard from './screens/dashboardAboutUserForHR';
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import ProfileBar from './components/profileBar';
 function App() {
   const [isUserHR, setUserHR] = useState(true);
   //function to check user if they belongs to HR department
@@ -27,7 +28,7 @@ function App() {
           {isUserHR ?
             <>
               <Route path='/hr/auditing' Component={AuditForHR} />
-              <Route path='/hr/dashboard' />
+              <Route path='/hr/dashboard' Component={HRDashboard}/>
               <Route path='/hr/users' />
               <Route path='/hr/userDetail' />
             </>
