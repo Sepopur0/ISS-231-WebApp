@@ -5,13 +5,13 @@ import { useTheme, Box } from "@mui/material";
 import { tokens } from "../theme";
 import DataTable from "react-data-table-component";
 import './common.css'
-export default function AuditForHR() {
+export default function SalaryPosition() {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [data, setData] = useState([
-        { name: "Anom Peterson", employeeID: '2324', date: "16/11/2023", action_type: "Delete", table: "Employee", field: "birthday", oldValue: "", newValue: "22" },
-        { name: "Lê Văn Nhân", employeeID: '2372', date: "6/12/2023", action_type: "Edit", table: "Employee", field: "name", oldValue: "", newValue: "14" },
-        { name: "Bùi Thanh Việt", employeeID: '1324', date: "23/11/2023", action_type: "Add", table: "Employee", field: "CCCD", oldValue: "", newValue: "17" },
+        { workplace: "Ho Chi Minh", position: 'Junior Developer', department:"Software Department", startDate: "16/8/2016", endDate: "19/7/2019", salary:13000000},
+        { workplace: "Ho Chi Minh", position: 'Senior Developer', department:"Software Department", startDate: "20/7/2019", endDate: "10/1/2023", salary:29000000},
+        { workplace: "Ho Chi Minh", position: 'Vice Manager', department:"Software Department", startDate: "11/1/2023", endDate: "TBD", salary:39000000},
     ])
     const [reloadTrigger, setReloadTrigger] = useState(false);
     useEffect(() => {
@@ -20,46 +20,35 @@ export default function AuditForHR() {
     }, [reloadTrigger])
     const columns = [
         {
-            name: 'Tên',
-            selector: row => row.name,
-            sortable: true,
+            name: 'Nơi làm việc',
+            selector: row => row.workplace,
         },
         {
-            name: 'Mã số nhân viên',
-            selector: row => row.employeeID,
-            sortable: true,
+            name: 'Vị trí',
+            selector: row => row.position,
         },
         {
-            name: 'Ngày thực hiện',
-            selector: row => row.date,
-            sortable: true,
+            name: 'Phòng ban',
+            selector: row => row.department,
         },
         {
-            name: 'Hành động',
-            selector: row => row.action_type,
+            name: 'Thời gian bắt đầu',
+            selector: row => row.startDate,
         },
         {
-            name: 'Bảng',
-            selector: row => row.table,
+            name: 'Thời gian kết thúc',
+            selector: row => row.endDate,
         },
         {
-            name: 'Trường',
-            selector: row => row.field,
-        },
-        {
-            name: 'Giá trị cũ',
-            selector: row => row.oldValue,
-        },
-        {
-            name: 'Giá trị mới',
-            selector: row => row.newValue,
+            name: 'Lương',
+            selector: row => row.salary,
         },
     ];
 
     return (
         <div>
             <div className="common-header">
-                <h3>Lịch sử hoạt động</h3>
+                <h3>Lịch sử làm việc</h3>
                 <div>
                     <Button variant="primary" className="btn-success" onClick={() => { setReloadTrigger(!reloadTrigger) }}>Refresh</Button>
                 </div>

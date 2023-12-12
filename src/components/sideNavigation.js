@@ -225,13 +225,6 @@ const SideNavigation = (isUserHR) => {
                             selected={selected}
                             setSelected={setSelected}
                         />
-                        <Item
-                            title="Chi tiết người dùng"
-                            to="/hr/userDetail"
-                            icon={<PersonSearchIcon />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
                     </> :
                         null}
             </Menu>

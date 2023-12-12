@@ -5,13 +5,12 @@ import { useTheme, Box } from "@mui/material";
 import { tokens } from "../theme";
 import DataTable from "react-data-table-component";
 import './common.css'
-export default function AuditForHR() {
+export default function UserManageHR() {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const [data, setData] = useState([
-        { name: "Anom Peterson", employeeID: '2324', date: "16/11/2023", action_type: "Delete", table: "Employee", field: "birthday", oldValue: "", newValue: "22" },
-        { name: "Lê Văn Nhân", employeeID: '2372', date: "6/12/2023", action_type: "Edit", table: "Employee", field: "name", oldValue: "", newValue: "14" },
-        { name: "Bùi Thanh Việt", employeeID: '1324', date: "23/11/2023", action_type: "Add", table: "Employee", field: "CCCD", oldValue: "", newValue: "17" },
+        { name: "Anom Peterson", employeeID: '2324', department: "Software Department", priviliges:"Delete-Employee \n Update-Employee"},
+        { name: "Bùi Việt Hoàng", employeeID: '1521', department: "Software Department", priviliges:"Delete-Employee \n Update-Employee"},
     ])
     const [reloadTrigger, setReloadTrigger] = useState(false);
     useEffect(() => {
@@ -30,36 +29,20 @@ export default function AuditForHR() {
             sortable: true,
         },
         {
-            name: 'Ngày thực hiện',
-            selector: row => row.date,
+            name: 'Phòng ban',
+            selector: row => row.department,
             sortable: true,
         },
         {
-            name: 'Hành động',
-            selector: row => row.action_type,
-        },
-        {
-            name: 'Bảng',
-            selector: row => row.table,
-        },
-        {
-            name: 'Trường',
-            selector: row => row.field,
-        },
-        {
-            name: 'Giá trị cũ',
-            selector: row => row.oldValue,
-        },
-        {
-            name: 'Giá trị mới',
-            selector: row => row.newValue,
+            name: 'Quyền được cấp',
+            selector: row => row.priviliges,
         },
     ];
 
     return (
         <div>
             <div className="common-header">
-                <h3>Lịch sử hoạt động</h3>
+                <h3>Danh sách người dùng</h3>
                 <div>
                     <Button variant="primary" className="btn-success" onClick={() => { setReloadTrigger(!reloadTrigger) }}>Refresh</Button>
                 </div>
