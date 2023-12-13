@@ -11,6 +11,7 @@ const LoginPage = () => {
 
     const handleFormSubmit = async (values) => {
         try{
+            console.log("Logging in...");
             const res = await LoginAPI.post(values);
             console.log(res);
             navigate("/profile");
