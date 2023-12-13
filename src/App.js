@@ -14,6 +14,8 @@ import HRDashboard from './screens/dashboardAboutUserForHR';
 import ProfilePage from './screens/profilePage';
 import SalaryPosition from './screens/salaryPosition';
 import UserManageHR from './screens/userManageForHR';
+import LoginPage from './screens/login';
+
 function App() {
   const [isUserHR, setUserHR] = useState(true);
   const [theme, colorMode] = useMode();
@@ -35,7 +37,9 @@ function App() {
                 <Route path='/workHistory' Component={SalaryPosition}/>
                 <Route path='/profile/changePassword' />
                 <Route path='/recruit' />
-                <Route path='/about' /> */
+                <Route path='/recruit' />
+                <Route path='/about' />
+                <Route path='/login' Component={LoginPage}/>
                 {isUserHR ?
                   <>
                     <Route path='/hr/auditing' Component={AuditForHR} />

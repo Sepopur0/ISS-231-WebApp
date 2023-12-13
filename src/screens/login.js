@@ -3,15 +3,28 @@ import { useNavigate } from "react-router";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { LoginAPI } from "../apis/login/login";
 
 const LoginPage = () => {
-  const isNonMobile = useMediaQuery("(min-width:600px)");
+    const navigate=useNavigate();
+    const isNonMobile = useMediaQuery("(min-width:600px)");
 
-  const handleFormSubmit = (values) => {
-    console.log(values);
-  };
+    const handleFormSubmit = async (values) => {
+        try{
+            const res = await LoginAPI.post(values);
+            console.log(res);
+            navigate("/profile");
+        } catch (err) {
+            console.log(err);
+            window.location.reload();
+        }
+    };
+    const values = {
+        email:"",
+        password:"",
+    };
 
-  return (
+    return (
     <Box m="20px">
       <div className="common-login">
 
@@ -19,7 +32,7 @@ const LoginPage = () => {
 
       <Formik
         onSubmit={handleFormSubmit}
-        initialValues={initialValues}
+        initialValues={values}
         validationSchema={checkoutSchema}
       >
         {({
@@ -30,12 +43,14 @@ const LoginPage = () => {
           handleChange,
           handleSubmit,
         }) => (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleFormSubmit}>
             <Box
               display="grid"
               gap="30px"
               gridTemplateColumns="repeat(4, minmax(0, 1fr))"
               sx={{
+                flexDirection: 'column',
+                justifyContent: 'center',
                 "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
               }}
             >
@@ -43,32 +58,30 @@ const LoginPage = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="First Name"
+                label="Email"
                 onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.firstName}
-                name="firstName"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
+                onChange={e => handleChange(e)}
+                value={values.email}
+                name="email"
+                sx={{ gridColumn: "span 4",
+                    maxWidth: "300px" }}
               />
               <TextField
-                fullWidth
+                fullWidth  
                 variant="filled"
                 type="text"
-                label="Last Name"
+                label="Password"
                 onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.lastName}
-                name="lastName"
-                error={!!touched.lastName && !!errors.lastName}
-                helperText={touched.lastName && errors.lastName}
-                sx={{ gridColumn: "span 2" }}
+                onChange={e => handleChange(e)}
+                value={values.password}
+                name="password"
+                sx={{ gridColumn: "span 4" ,
+                        maxWidth: "300px"}}
               />
             </Box>
-            <Box display="flex" justifyContent="end" mt="20px">
+            <Box display="flex" justifyContent="start" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
-                Create New User
+                Login
               </Button>
             </Box>
           </form>
@@ -92,13 +105,5 @@ const checkoutSchema = yup.object().shape({
   address1: yup.string().required("required"),
   address2: yup.string().required("required"),
 });
-const initialValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  contact: "",
-  address1: "",
-  address2: "",
-};
 
 export default LoginPage;
