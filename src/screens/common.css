@@ -6,3 +6,10 @@
     justify-content: space-between;
     width: 1000px;
 }
+.common-login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width:1000px
+}

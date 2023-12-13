@@ -15,7 +15,6 @@ import InfoIcon from '@mui/icons-material/Info';
 import HistoryIcon from '@mui/icons-material/History';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import ListIcon from '@mui/icons-material/List';
-import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 // export default function SideNavigation({ isUserHR }) {
 //     const theme = useTheme();
 //     const colors = tokens(theme.palette.mode);
