@@ -40,7 +40,21 @@ export default function ProfilePage() {
     const [reloadTrigger, setReloadTrigger] = useState(false);
     useEffect(() => {
         ///get user data
-
+        const getUserData = async () => {
+          const user = await InformationAPI.get('EMP02001');
+          setData([
+            { 
+              name: user.rows[0][2],
+              email: user.rows[0][5], 
+              workplace: user.rows[0][2],
+              address: user.rows[0][4], 
+              position: "staff", 
+              phonenumber: user.rows[0][3], 
+              salary: user.rows[0][8]
+            }
+          ])
+        }
+        getUserData();
     }, [reloadTrigger])
 
     return (

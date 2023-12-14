@@ -1,8 +1,9 @@
 import axiosClient from "../axiosClient";
 
 export const InformationAPI = {
+    // dieu chinh ham nay de get
     get: (id) => {
-        const url = `${id}/information`;
+        const url = `/employee/${id}`;
         return axiosClient.get(url);
     },
     update: (id, value) => {
